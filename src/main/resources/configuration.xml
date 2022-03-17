@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="userDAO" class="org.db.soft.base.dao.UserDAOImplement"/>
+
+
+    <bean id="userDAOTemplate" abstract="true">
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
+
+    <!--  autowire="byType"-->
+    <bean id="server" class="org.db.soft.base.dao.Server" parent="userDAOTemplate">
+    </bean>
+
+    <bean id="adminServer" class="org.db.soft.base.dao.AdminServer" parent="userDAOTemplate">
+    </bean>
+</beans>
